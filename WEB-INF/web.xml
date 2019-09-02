@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
+  <display-name>yarnsls-no5</display-name>
+  <servlet>
+    <description>JAX-RS Tools Generated - Do not modify</description>
+    <servlet-name>JAX-RS Servlet</servlet-name>
+    <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>usePython</servlet-name>
+    <servlet-class>usePython</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>downloadFile</servlet-name>
+    <servlet-class>yarnsls.servlet.com.downloadFile</servlet-class>
+  </servlet>
+  <servlet>
+    <description>This is the description of my J2EE component</description>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <servlet-name>getFile</servlet-name>
+    <servlet-class>yarnsls.servlet.com.getFile</servlet-class>
+  </servlet>
+
+
+
+  <servlet-mapping>
+    <servlet-name>JAX-RS Servlet</servlet-name>
+    <url-pattern>/jaxrs/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>usePython</servlet-name>
+    <url-pattern>/servlet/usePython</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>downloadFile</servlet-name>
+    <url-pattern>/downloadFile</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>getFile</servlet-name>
+    <url-pattern>/getFile</url-pattern>
+  </servlet-mapping>
+</web-app>

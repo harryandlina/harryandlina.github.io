@@ -1,7 +1,205 @@
+<!DOCTYPE html>
 <html>
-<body>
-<h1>
-hellworlad
-</h1>
+
+<head>
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, maximum-scale=1" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+
+
+
+<title>Home</title>
+<!-- BOOTSTRAP CORE STYLE CSS -->
+<link href="assets/css/bootstrap.css" rel="stylesheet" />
+<!-- VEGAS SLIDESHOW STYLE CSS -->
+<link href="assets/plugins/vegas/jquery.vegas.min.css" rel="stylesheet" />
+<!-- FONTAWESOME STYLE CSS -->
+<link href="assets/css/font-awesome.min.css" rel="stylesheet" />
+<!-- CUSTOM STYLE CSS -->
+<link href="assets/css/style.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="assets/css/detail.css" />
+<!-- GOOGLE FONT -->
+<link href='http://fonts.googleapis.com/css?family=Open+Sans'
+	rel='stylesheet' type='text/css' />
+<link rel="stylesheet" href="assets/css/style.css">
+<!--<link rel="stylesheet" href="assets/css/main.css">-->
+<!--<link rel="stylesheet" href="assets/css/rangeslider.css">-->
+
+
+</head>
+
+<body data-spy="scroll" data-target="#menu">
+	<div class="navbar navbar-inverse navbar-fixed-top scrollclass"
+		id="menu">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse"
+					data-target=".navbar-collapse">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span
+						class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#"><img src="assets/img/logo.jpg"
+					alt="" style="max-height:40px" /></a>
+			</div>
+			<div class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="https://github.com/harryandlina">HOME</a></li>
+					<li><a href="https://github.com/harryandlina/SparkAIBench">SparkAIBench</a></li>
+					<li><a href="#about">ABOUT</a></li>
+					<li><a href="#contact">CONTACT</a></li>
+				</ul>
+			</div>
+
+		</div>
+	</div>
+	<!--NAVBAR SECTION END-->
+	<div id="home">
+		<div class="container">
+			<div class="row">
+				<div
+					class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 ">
+					<div id="carousel-slider" data-ride="carousel"
+						class="carousel slide">
+
+						<div class="carousel-inner">
+							<div class="item active">
+
+								<h1>WELCOME TO HERE</h1>
+							</div>
+							<div class="item">
+								<h1>INTRODUCE HOW TO USE THIS TOOL</h1>
+							</div>
+							<div class="item">
+								<h1>PRODUCE THE AI WORKLOAD OF SPARK</h1>
+							</div>
+						</div>
+						<!--INDICATORS-->
+						<ol class="carousel-indicators">
+							<li data-target="#carousel-slider" data-slide-to="0"
+								class="active"></li>
+							<li data-target="#carousel-slider" data-slide-to="1" class=""></li>
+							<li data-target="#carousel-slider" data-slide-to="2" class=""></li>
+						</ol>
+
+					</div>
+
+				</div>
+			</div>
+			<div class="row">
+				<div
+					class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2  scrollclass">
+
+					<p>This website is used to produce the AI workload of spark.</p>
+					<p>这个网站是用来生成特定的提交在spark上的AI负载。</p>
+					<br /> <a href="#about" class="btn  btn-lg custom-btn-1"><i
+						class="fa fa-home"></i>ABOUT </a> <a href="#services"
+						class="btn  btn-lg custom-btn-1"><i class="fa fa-comments-o"></i>
+						SERVICES </a> <a href="#contact" class="btn btn-lg custom-btn-1"><i
+						class="fa fa-globe"></i> CONTACT </a>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<!--HOME SECTION END-->
+	<hr />
+	<section id="about">
+		<div class="container">
+			<div class="row">
+				<div
+					class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2  text-center">
+					<h2>ABOUT US</h2>
+					<p>
+						
+                        <a href="https://github.com/harryandlina/SparkAIBench">Link: SPARK AI BENCH</a>
+					</p>
+				</div>
+			</div>
+
+			<div class="row ">
+            <labal>
+            <p>近年来，分布式机器学习工作负载正在迅速成为云计算领域的流行应用。现已提出了大量框架以并行方式执行的此类工作负载，例如Spark MLlib、BigDL和Tensorflow。训练数据规模的不断扩大和训练模式的快速发展带来了更高的学习精度，但同时也大大延长了训练时间。训练时间主要取决于得到的集群资源。基准测试可以针对人工智能负载的资源密集和耗时的特性进行测试，帮助系统操作员做出决策、调整资源供给和作业调度优化。</p>
+            <p>现有的典型调度程序，如 YARN的调度程序，通常为每个工作负载分配固定数量的资源，而无法利用额外的可用资源。近年来出现了一种根据集群状态和资源情况的动态自适应的作业调度程序。其中，最先进的技术之一是利用深度强化学习（DRL）技术，以尝试和错误的方式训练神经网络，以获得最佳的调度决策。目前，基于DRL的调度程序主要通过运行工作负载生成的集群日志来训练模型，因为缺乏能够自动生成多样可定制的用户工作负载，这些工作负载大都是手动设置的。很容易发现，以手动方式生成工作负载可能会导致代理培训的结果不准确，而且过程非常复杂，但今天生成工作负载的主要工作并不是集中在人工智能领域，现有的一些框架所提供工作负载主要被用于特定的应用领域。总而言之，目前还无法自动生成用户自定义的人工智能工作负载。</p>
+            <p>因此，我们设计并实现了SparkAIBench，它支持多样性人工智能算法、不同的输入数据大小以及参数化提交方法。SparkAIBench既支持传统的人工智能算法如朴素贝叶斯、SVM、Kmeans等，也支持Resnet，Inception等新型的人工智能算法。并且，SparkAIBench可通过调整输入数据大小或选择迭代次数来确定负载规模和消耗时间。</p>
+            </labal>
+			</div>
+		</div>
+	</section>
+
+	<!--ABOUT SECTION END-->
+	<hr />
+	
+	<hr />
+	<section id="contact">
+
+		<div class="container">
+			<div class="row">
+				<div
+					class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2  text-center">
+					<h2>CONTACT</h2>
+					<p>if you have any problem, please contact to us.</p>
+				</div>
+			</div>
+			<div class="row ">
+				<div
+					class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 text-center">
+					<form>
+						
+						<label>OUR EMAIL</label>
+						<div class="form-group">
+                        <p>Zifeng Liu: 1217750686@qq.com</p>
+						
+
+					</form>
+				</div>
+
+			</div>
+		</div>
+	</section>
+	<!--CONTACT SECTION END-->
+	<div class="footer">Copyright &copy; 2018.BIT</div>
+
+	<!-- CORE JQUERY  -->
+	<script src="assets/plugins/jquery-1.10.2.js"></script>
+	<!-- BOOTSTRAP SCRIPTS  -->
+	<script src="assets/plugins/bootstrap.js"></script>
+	<!-- EASING SCROLL SCRIPTS PLUGIN  -->
+	<script src="assets/plugins/vegas/jquery.vegas.min.js"></script>
+	<!-- VEGAS SLIDESHOW SCRIPTS  -->
+	<script src="assets/plugins/jquery.easing.min.js"></script>
+	<!-- CUSTOM SCRIPTS  -->
+	<script src="assets/js/custom.js"></script>
+	<script>
+		$(function() {
+			var $document = $(document);
+			var selector = '[data-rangeslider]';
+			var $inputRange = $(selector);
+	
+			// Example functionality to demonstrate a value feedback
+			// and change the output's value.
+			function valueOutput(element) {
+				var value = element.value;
+				var output = element.parentNode.getElementsByTagName('output')[0];
+	
+				output.innerHTML = value;
+			}
+	
+			// Initial value output
+			for (var i = $inputRange.length - 1; i >= 0; i--) {
+				valueOutput($inputRange[i]);
+			}
+			;
+	
+			// Update value output
+			$document.on('input', selector, function(e) {
+				valueOutput(e.target);
+			});
+	
+		});
+	</script>
+
 </body>
+
 </html>
