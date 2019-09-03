@@ -47,7 +47,8 @@
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="https://github.com/harryandlina">HOME</a></li>
 					<li><a href="https://github.com/harryandlina/SparkAIBench">SparkAIBench</a></li>
-					<li><a href="#about">ABOUT</a></li>
+					<li><a href="#about">INTRODUCTION</a></li>
+                    <li><a href="#step">SERVICES</a></li>
 					<li><a href="#contact">CONTACT</a></li>
 				</ul>
 			</div>
@@ -91,8 +92,8 @@
 				<div
 					class="col-lg-6 col-lg-offset-3 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2  scrollclass">
 
-					<p>This website is used to produce the AI workload of spark.</p>
-					<p>这个网站是用来生成特定的提交在spark上的AI负载。</p>
+					
+					<p>SparkAIBench使用说明</p>
 					<br /> <a href="#about" class="btn  btn-lg custom-btn-1"><i
 						class="fa fa-home"></i>ABOUT </a> <a href="#services"
 						class="btn  btn-lg custom-btn-1"><i class="fa fa-comments-o"></i>
@@ -130,7 +131,99 @@
 
 	<!--ABOUT SECTION END-->
 	<hr />
-	
+    <section id="step" align="center">
+    
+    <div class="container" style="width:800px" align="left">
+    <div class="row">
+    <div
+    class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2  text-center">
+    <h2>HOW TO USE</h2>
+    </div>
+    </div>
+    <div class="row ">
+    <h3>1.配置环境</h3>
+    <p>首先配置负载运行环境，所需运行环境如下:</br>
+    Hadoop&nbsp;: 2.7.7</br>
+    Scala&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 2.11.8</br>
+    Python&nbsp;&nbsp;:3.7.0</br>
+    Spark&nbsp;&nbsp;&nbsp;&nbsp;:2.3.1</br>
+    Java&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:1.8.0</br>
+    </p>
+    <b>1.1配置Hadoop</b>
+    <p>
+    Java：Java1.8或者以后的版本。</br>
+    Hadoop：推荐版本为2.7.7，以后的版本也可以使用。</br>
+    下载Hadoop：
+    <a href="https://www.apache.org/dyn/closer.cgi/hadoop/common/hadoop-2.7.7/hadoop-2.7.7-src.tar.gz">https://www.apache.org/dyn/closer.cgi/hadoop/common/hadoop-2.7.7/hadoop-2.7.7-src.tar.gz</a></br>
+    </br>
+    <b>（1）    解压Hadoop包</b></br>
+    tar -zxvf hadoop-2.7.3.tar.gz</br>
+    </br>
+    <b>（2）    编辑配置文件</b></br>
+    export JAVA_HOME=/path/to/java_home</br>
+    </br>
+    <b>（3）    在hadoop-env.sh中添加Java环境信息</b></br>
+    export JAVA_HOME=/path/to/java_home</br>
+    </br>
+    <b>（4）    修改core-site.xml<b></br>
+    &lt;configuration&gt;</br>
+    &lt;property&gt;</br>
+    &lt;name&gt;fs.default.name&lt;/name&gt; &lt;value&gt;hdfs://master_node_hostname:9100&lt;/value&gt;</br>
+    &lt;/property&gt;</br>
+    &lt;property&gt;</br>
+    &lt;name&gt;fs.defaultFS&lt;/name&gt;</br>
+    &lt;value&gt;hdfs://localhost:9000&lt;/value&gt;</br>
+    &lt;/property&gt;</br>
+    &lt;/configuration&gt;</br>
+    </br>
+    <b>(5)修改hdsf-site.xml文件</b></br>
+    &lt;configuration&gt; </br>
+    &lt;property&gt; </br>
+    &lt;name&gt;dfs.namenode.name.dir&lt;/name&gt;</br>
+    &lt;value&gt;/path/to/store/metadata&lt;/value&gt;</br>
+    &lt;description&gt;&lt;/description&gt;</br>
+    &lt;/property&gt;</br> &lt;property&gt; </br>
+    &lt;name&gt;dfs.datanode.data.dir&lt;/name&gt;</br>
+    &lt;value&gt;/path/to/store/hdfs_data&lt;/value&gt;</br>
+    &lt;description&gt;&lt;/description&gt; </br>
+    &lt;/property&gt; </br>
+    &lt;property&gt; </br>
+    &lt;name&gt;dfs.replication&lt;/name&gt;</br>
+    &lt;value&gt;replication_num&lt;/value&gt; </br>
+    &lt;/property&gt; </br>
+    &lt;/configuration&gt;</br>
+    </br>
+    （6）    把Hadoop路径添加到/etc/profile中</br>
+    export HADOOP_HOME=your_hadoop_home_path</br>
+    source /etc/profile</br>
+    
+    </p>
+    
+    <b>1.2配置Spark</b></br>
+    <p>
+    Java：1.8或以后版本</br>
+    Scala：2.11.8或以后版本</br>
+    Hadoop：2.7.7</br>
+    下载spark：<a href="https://archive.apache.org/dist/spark/">https://archive.apache.org/dist/spark/</a></br>
+    </br>
+    （1）    解压spark文件：</br>
+    tar spark-2.3.1-bin-hadoop2.7.tar</br>
+    </br>
+    （2）    修改配置文件：</br>
+    在 _./conf/spark-env.sh中添加:</br>  export SPARK_DIST_CLASSPATH=$(hadoop classpath)</br>
+    </br>
+    （3）    在/etc/profile中添加spark信息：</br>
+    export SPARK_HOME=/path/to/spark</br>
+    export PATH=$PATH:$SPARK_HOME</br>
+    export PATH = $PATH:$SPARK_HOME/bin</br>
+    source /etc/profile</br>
+    另需将2.0-SPARK_2.3-0.8.0.jar和opennlp-tools-1.6.0.jar移到spark-home对应路径下的jars文件夹中。</br>
+    </br>
+    </p>
+    </div>
+    </div>
+    </section>
+    
 	<hr />
 	<section id="contact">
 
