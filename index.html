@@ -49,7 +49,7 @@
 					<li><a href="https://github.com/harryandlina/SparkAIBench">SparkAIBench</a></li>
 					<li><a href="#about">INTRODUCTION</a></li>
                     <li><a href="#step">HOW TO USE</a></li>
-					<li><a href="#contact">CONTACT</a></li>
+					<li><a href="#contact">TEAM</a></li>
 				</ul>
 			</div>
 
@@ -107,7 +107,7 @@
 	<!--HOME SECTION END-->
 	<hr />
 	<section id="about">
-		<div class="container">
+		<div class="container" align="center">
 			<div class="row">
 				<div
 					class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2  text-center">
@@ -119,11 +119,11 @@
 				</div>
 			</div>
 
-			<div class="row ">
+			<div class="row " style="width:800px" align="left">
             <labal>
-            <p>近年来，分布式机器学习工作负载正在迅速成为云计算领域的流行应用。现已提出了大量框架以并行方式执行的此类工作负载，例如Spark MLlib、BigDL和Tensorflow。训练数据规模的不断扩大和训练模式的快速发展带来了更高的学习精度，但同时也大大延长了训练时间。训练时间主要取决于得到的集群资源。基准测试可以针对人工智能负载的资源密集和耗时的特性进行测试，帮助系统操作员做出决策、调整资源供给和作业调度优化。</p>
-            <p>现有的典型调度程序，如 YARN的调度程序，通常为每个工作负载分配固定数量的资源，而无法利用额外的可用资源。近年来出现了一种根据集群状态和资源情况的动态自适应的作业调度程序。其中，最先进的技术之一是利用深度强化学习（DRL）技术，以尝试和错误的方式训练神经网络，以获得最佳的调度决策。目前，基于DRL的调度程序主要通过运行工作负载生成的集群日志来训练模型，因为缺乏能够自动生成多样可定制的用户工作负载，这些工作负载大都是手动设置的。很容易发现，以手动方式生成工作负载可能会导致代理培训的结果不准确，而且过程非常复杂，但今天生成工作负载的主要工作并不是集中在人工智能领域，现有的一些框架所提供工作负载主要被用于特定的应用领域。总而言之，目前还无法自动生成用户自定义的人工智能工作负载。</p>
-            <p>因此，我们设计并实现了SparkAIBench，它支持多样性人工智能算法、不同的输入数据大小以及参数化提交方法。SparkAIBench既支持传统的人工智能算法如朴素贝叶斯、SVM、Kmeans等，也支持Resnet，Inception等新型的人工智能算法。并且，SparkAIBench可通过调整输入数据大小或选择迭代次数来确定负载规模和消耗时间。</p>
+            <p>&emsp;近年来，分布式机器学习工作负载正在迅速成为云计算领域的流行应用。现已提出了大量框架以并行方式执行的此类工作负载，例如Spark MLlib、BigDL和Tensorflow。训练数据规模的不断扩大和训练模式的快速发展带来了更高的学习精度，但同时也大大延长了训练时间。训练时间主要取决于得到的集群资源。基准测试可以针对人工智能负载的资源密集和耗时的特性进行测试，帮助系统操作员做出决策、调整资源供给和作业调度优化。</p>
+            <p>&emsp;现有的典型调度程序，如 YARN的调度程序，通常为每个工作负载分配固定数量的资源，而无法利用额外的可用资源。近年来出现了一种根据集群状态和资源情况的动态自适应的作业调度程序。其中，最先进的技术之一是利用深度强化学习（DRL）技术，以尝试和错误的方式训练神经网络，以获得最佳的调度决策。目前，基于DRL的调度程序主要通过运行工作负载生成的集群日志来训练模型，因为缺乏能够自动生成多样可定制的用户工作负载，这些工作负载大都是手动设置的。很容易发现，以手动方式生成工作负载可能会导致代理培训的结果不准确，而且过程非常复杂，但今天生成工作负载的主要工作并不是集中在人工智能领域，现有的一些框架所提供工作负载主要被用于特定的应用领域。总而言之，目前还无法自动生成用户自定义的人工智能工作负载。</p>
+            <p>&emsp;因此，我们设计并实现了SparkAIBench，它支持多样性人工智能算法、不同的输入数据大小以及参数化提交方法。SparkAIBench既支持传统的人工智能算法如朴素贝叶斯、SVM、Kmeans等，也支持Resnet，Inception等新型的人工智能算法。并且，SparkAIBench可通过调整输入数据大小或选择迭代次数来确定负载规模和消耗时间。</p>
             </labal>
 			</div>
 		</div>
@@ -147,7 +147,7 @@
     Scala&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: 2.11.8</br>
     Python&nbsp;&nbsp;:3.7.0</br>
     Spark&nbsp;&nbsp;&nbsp;&nbsp;:2.3.1</br>
-    Java&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:1.8.0</br>
+    Java&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:1.8.0
     </p>
     <b>1.1配置Hadoop</b>
     <p>
@@ -155,17 +155,25 @@
     Hadoop：推荐版本为2.7.7，以后的版本也可以使用。</br>
     下载Hadoop：
     <a href="https://www.apache.org/dyn/closer.cgi/hadoop/common/hadoop-2.7.7/hadoop-2.7.7-src.tar.gz">https://www.apache.org/dyn/closer.cgi/hadoop/common/hadoop-2.7.7/hadoop-2.7.7-src.tar.gz</a></br>
-    </br>
-    <b>（1）    解压Hadoop包</b></br>
+    
+    </p>
+    <b>1.1.1解压Hadoop包</b></br>
+    <p>
     tar -zxvf hadoop-2.7.3.tar.gz</br>
-    </br>
-    <b>（2）    编辑配置文件</b></br>
+    
+    </p>
+    <b>1.1.2编辑配置文件</b></br>
+    <p>
     export JAVA_HOME=/path/to/java_home</br>
-    </br>
-    <b>（3）    在hadoop-env.sh中添加Java环境信息</b></br>
+    
+    </p>
+    <b>1.1.3在hadoop-env.sh中添加Java环境信息</b></br>
+    <p>
     export JAVA_HOME=/path/to/java_home</br>
-    </br>
-    <b>（4）    修改core-site.xml<b></br>
+    
+    </p>
+    <b>1.1.4修改core-site.xml<b></br>
+    <p>
     &lt;configuration&gt;</br>
     &lt;property&gt;</br>
     &lt;name&gt;fs.default.name&lt;/name&gt; &lt;value&gt;hdfs://master_node_hostname:9100&lt;/value&gt;</br>
@@ -175,8 +183,10 @@
     &lt;value&gt;hdfs://localhost:9000&lt;/value&gt;</br>
     &lt;/property&gt;</br>
     &lt;/configuration&gt;</br>
-    </br>
-    <b>(5)修改hdsf-site.xml文件</b></br>
+    
+    </p>
+    <b>1.1.5修改hdsf-site.xml文件</b></br>
+    <p>
     &lt;configuration&gt; </br>
     &lt;property&gt; </br>
     &lt;name&gt;dfs.namenode.name.dir&lt;/name&gt;</br>
@@ -192,8 +202,10 @@
     &lt;value&gt;replication_num&lt;/value&gt; </br>
     &lt;/property&gt; </br>
     &lt;/configuration&gt;</br>
-    </br>
-    （6）    把Hadoop路径添加到/etc/profile中</br>
+    
+    </p>
+    1.1.6 把Hadoop路径添加到/etc/profile中</br>
+    <p>
     export HADOOP_HOME=your_hadoop_home_path</br>
     source /etc/profile</br>
     
@@ -205,20 +217,21 @@
     Scala：2.11.8或以后版本</br>
     Hadoop：2.7.7</br>
     下载spark：<a href="https://archive.apache.org/dist/spark/">https://archive.apache.org/dist/spark/</a></br>
-    </br>
-    （1）    解压spark文件：</br>
+    </p>
+    1.2.1解压spark文件：</br>
+    <p>
     tar spark-2.3.1-bin-hadoop2.7.tar</br>
-    </br>
-    （2）    修改配置文件：</br>
+     </p>
+    1.2.2修改配置文件：</br>
+    <p>
     在 _./conf/spark-env.sh中添加:</br>  export SPARK_DIST_CLASSPATH=$(hadoop classpath)</br>
     </br>
-    （3）    在/etc/profile中添加spark信息：</br>
+    1.2.3在/etc/profile中添加spark信息：</br>
     export SPARK_HOME=/path/to/spark</br>
     export PATH=$PATH:$SPARK_HOME</br>
     export PATH = $PATH:$SPARK_HOME/bin</br>
     source /etc/profile</br>
     另需将2.0-SPARK_2.3-0.8.0.jar和opennlp-tools-1.6.0.jar移到spark-home对应路径下的jars文件夹中。</br>
-    </br>
     </p>
     <b>1.3下载组件</b></br>
     <p>
@@ -359,8 +372,17 @@
 			<div class="row">
 				<div
 					class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2  text-center">
-					<h2>CONTACT</h2>
+					<h2>TEAM</h2>
+                    <p>
+                    韩锐，导师，北京理工大学</br>
+                    刘驰，导师，北京理工大学</br>
+                    左小将，博士，北京理工大学</br>
+                    李泽清，研究生，北京理工大学</br>
+                    刘子峰，研究生，北京理工大学</br>
+                    
+                    </p>
 					<p>if you have any problem, please contact to us.</p>
+                    
 				</div>
 			</div>
 			<div class="row ">
