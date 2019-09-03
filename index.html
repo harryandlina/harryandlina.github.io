@@ -48,7 +48,7 @@
 					<li><a href="https://github.com/harryandlina">HOME</a></li>
 					<li><a href="https://github.com/harryandlina/SparkAIBench">SparkAIBench</a></li>
 					<li><a href="#about">INTRODUCTION</a></li>
-                    <li><a href="#step">SERVICES</a></li>
+                    <li><a href="#step">HOW TO USE</a></li>
 					<li><a href="#contact">CONTACT</a></li>
 				</ul>
 			</div>
@@ -220,6 +220,134 @@
     另需将2.0-SPARK_2.3-0.8.0.jar和opennlp-tools-1.6.0.jar移到spark-home对应路径下的jars文件夹中。</br>
     </br>
     </p>
+    <b>1.3下载组件</b></br>
+    <p>
+    jar文件：</br>
+    workload_bayes.jar</br>
+    workload_FPGrowth.jar</br>
+    workload_kmeans.jar</br>
+    workload_lda.jar</br>
+    workload_svm.jar</br>
+    workload_lda.jar</br>
+    workload_autoencoder.jar</br>
+    workload_lenet.jar</br>
+    workload_resnet.jar</br>
+    workload_rnn.jar</br>
+    workload_vgg.jar</br>
+    </br>
+    shell文件：</br>
+    start.sh</br>
+    </br>
+    python文件：</br>
+    start_workload.py</br>
+    information_FB.py</br>
+    
+    
+    </p>
+    <h3>2.数据集</h3>
+    </br>
+     <b>2.1下载数据集</b>
+     <p>
+     MLlib和Facebook相关数据集可从Github上直接下载，BigDL相关数据集详细情况如下所示：</br>
+     </br>
+     Autoencoder需要MNIST数据集</br>
+     <a href="http://yann.lecun.com/exdb/mnist/">http://yann.lecun.com/exdb/mnist/</a></br>
+     需要下载文件:</br>
+     train-images-idx3-ubyte.gz</br>
+     train-labels-idx1-ubyte.gz</br>
+     解压后为train-images-idx3-ubyte和train-labels-idx1-ubyte</br>
+     </br>
+     LeNet需要MNIST数据集</br>
+     <a href="http://yann.lecun.com/exdb/mnist/">http://yann.lecun.com/exdb/mnist/</a></br>
+     
+    
+    需要下载以下四个文件:</br>
+     train-images-idx3-ubyte,</br>
+     train-labels-idx1-ubyte</br>
+     t10k-images-idx3-ubyte</br>
+     t10k-labels-idx1-ubyte</br>
+     </br>
+     ResNet需要CIFAR-10数据集</br>
+     <a href="https://www.cs.toronto.edu/~kriz/cifar.html">https://www.cs.toronto.edu/~kriz/cifar.html</a></br>
+     
+     下载时选择下载二进制的版本，CIFAR-10 binary version</br>
+     </br>
+     VGG需要CIFAR-10数据集</br>
+     <a href="https://www.cs.toronto.edu/~kriz/cifar.html">https://www.cs.toronto.edu/~kriz/cifar.html</a></br>
+     
+     下载时选择下载二进制的版本，CIFAR-10 binary version</br>
+     </br>
+     RNN需要the Tiny Shakespeare Texts数据集</br>
+     <a href="https://raw.githubusercontent.com/karpathy/char-rnn/master/data/tinyshakespeare/input.txt">https://raw.githubusercontent.com/karpathy/char-rnn/master/data/tinyshakespeare/input.txt</a></br>
+     
+    下载后请将其分为训练集（train.txt）和测试集（val.txt），命令如下所示</br>
+     export LANG=en_US.UTF-8</br>
+     head -n 8000 input.txt > val.txt</br>
+     tail -n +8000 input.txt > train.txt</br>
+     </p>
+    <b>2.2配置数据集</b>
+    <p>
+    2.2.1将四个Facebook的tsv数据文件移到python脚本相同的路径里。</br>
+    </br>
+    2.2.2生成足够的MLlib使用的数据集，由于空间限制，GitHub每个MLlib数据集仅提供了三个事例数据集，需要使用脚本produce_workload.sh生成其他数据集，数据集递增倍数可设置。</br>
+    &emsp;命令如下所示：</br>
+    &emsp;bash produce_worklaod.sh &lt;size&gt;</br>
+    size参数代表生成数据集递增的倍数。</br>
+    
+    然后将MLlib对应数据文件上传到HDFS中的/workload_data文件夹下。</br>
+    &emsp;命令如下所示：</br>
+    &emsp;hadoop fs –put /your/path/todata /workload_data</br>
+    </br>
+    2.2.3BigDL对应的数据文件路径需要在start.py文件中设置路径。</br>
+    
+    </p>
+    <h3>3.运行脚本</h3>
+    </br>
+    &emsp;运行脚本可以分为两种方法，一种使用start_workload.py脚本批量提交负载，另一种通过使用start.sh脚本提交单个负载。</br>
+    </br>
+    <b>3.1批量提交负载</b>
+    <p>
+    提交负载：python start_workload.py &lt;size&gt;</br>
+    size参数为提交作业的个数。</br>
+    SparkAIBench通过组合不同算法负载和不同负载规模来模拟多种多样的负载，而且SparkAIBench已尽可能的减少使用该工具的复杂性。提交作业之前，需要核对start.py中各项参数是否符合要求，如BigDL文件路径等。</br>
+    （1）如果对生成的负载没有特定要求，则可以直接运行start.py文件，就可以将生成的负载运行到spark上。</br>
+    （2）如有特定要求，在start.py中可以指定各个算法负载出现的比例（默认出现比例都相等）；如对提交队列有要求，可以在start.py中指定队列名称和提交到各队列的作业比例。（默认2个队列，queueA和queueB，出现比例为1：1）</br>
+    </br>
+    </p>
+    <b>3.2单个提交负载</b>
+    </br>
+    </br>
+    <p>
+    MLlib和BigDL负责都可以通过使用start.sh脚本调用运行</br>
+    </p>
+    
+    <b>3.2.1MLlib相关负载：</b></br>
+    <p>
+    通过使用start.sh脚本，提交MLlib等相关负载，提交实例如下：</br>
+    bash start.sh  &lt;algorithmname&gt; &lt;queue&gt; &lt;pathtojar&gt; &lt;size&gt;
+    </br>
+    参数说明如下：</br>
+    &emsp;&emsp;algorithmname选择提交的算法名称：linear， kmeans， svm， bayes ，FPGrowth，lda</br>
+    &emsp;&emsp;size选择提交的数据量大小，可选范围为1-8，1代表数据量最小，8代表数据量最多</br>
+    &emsp;&emsp;    pathjar输入jar的绝对路径</br>
+   &emsp;&emsp;    queue为提交到的队列名称</br>
+    </br>
+    </p>
+    <b>3.2.2BigDL相关负载：</b></br>
+    <p>
+    通过使用start.sh脚本，提交rnn，autoencoder等BigDL等负载。提交实例如下：</br>
+    bash start.sh  &lt;algorithmname&gt; &lt;queue&gt; &lt;pathtojar&gt; &lt;iterationtime&gt; &lt;pathtodata&gt;</br>
+    参数说明如下：</br>
+    &emsp;&emsp;    algorithmname选择需要的算法名称：rnn，autoencoder，lenet，resnet，vgg</br>
+    &emsp;&emsp;    pathtojar输入jar的绝对路径</br>
+    &emsp;&emsp;    pathtodata输入数据集所在的绝对路径</br>
+    &emsp;&emsp;    iterationtime选择迭代的次数</br>
+    &emsp;&emsp;    queue为提交到的队列名称</br>
+    </br>
+    
+    </p>
+    
+    
     </div>
     </div>
     </section>
